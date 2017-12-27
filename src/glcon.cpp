@@ -2,6 +2,7 @@
 #include "../include/utfstr.h"
 #include "../include/font.h"
 #include "../include/threadutil.h"
+#include "../include/config.h"
 #include <GLFW/glfw3.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -64,7 +65,7 @@ static void KeyCallback(GLFWwindow*, int key, int, int act, int) {
 
 static void* CoreLoop(void*) {
 	glfwInit();
-	fontinfo = fontInit("/usr/local/share/libglcon/uming.ttc", 96);
+	fontinfo = fontInit(_FONT_PATH_, 96);
 	buffer = new CHAR*[row];
 	for (int i = 0; i < row; ++i) {
 		buffer[i] = new CHAR[column];

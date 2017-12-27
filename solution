@@ -8,7 +8,6 @@ target libglcon
 	install
 		inst_inc @include/glcon.h
 		inst_lib .output/libglcon.so
-		inst_shr @uming.ttc
 	source @src/font.cpp
 	source @src/glcon.cpp
 	source @src/utfstr.cpp
