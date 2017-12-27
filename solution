@@ -1,0 +1,29 @@
+lang c++
+std c++98
+warning all
+warning extra
+debug true
+target libglcon
+	type library
+	install
+		inst_inc @include/glcon.h
+		inst_lib .output/libglcon.so
+		inst_shr @uming.ttc
+	source @src/font.cpp
+	source @src/glcon.cpp
+	source @src/utfstr.cpp
+	include /usr/include/freetype2
+	link freetype
+	link glfw
+	link GLU
+	link GL
+	link pthread
+target reader
+	type excutable
+	install
+		inst_bin .output/reader
+	depend libglcon
+	source @reader/reader.cpp
+	library .output
+	link glcon
+	rpath /usr/local/lib
