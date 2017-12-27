@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""Divide file"""
+
+import sys
+import re
+
+def _main():
+    cur_stage = ''
+    cur_id = 0
+    cur_file = open(str(cur_id), mode='w')
+    file = open(sys.argv[1])
+    for i in file.readlines():
+        i = re.sub('\n$', '', i)
+        ret = re.match(r'^\s*第(.+?)章', i)
+        if ret and cur_stage != ret.group(1):
+            cur_stage = ret.group(1)
+            cur_id = cur_id + 1
+            cur_file.close()
+            cur_file = open(str(cur_id), mode='w')
+        cur_file.write(i + '\n')
+
+if __name__ == '__main__':
+    _main()
